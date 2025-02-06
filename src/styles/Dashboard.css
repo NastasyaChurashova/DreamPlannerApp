@@ -1,0 +1,16 @@
+.dashboard {
+    padding: 20px;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  
+  .calendar-grid div {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  

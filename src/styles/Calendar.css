@@ -1,8 +1,8 @@
 .calendar {
-  margin-left: 270px; /* Учитываем ширину бокового меню */
+  margin-left: 270px;
   padding: 20px;
   background-color: #f9f9f9;
-  min-height: calc(100vh - 80px); /* Учитываем высоту хедера */
+  min-height: calc(100vh - 80px); 
 }
 
 .calendar header {
@@ -41,10 +41,11 @@
 
 .date:hover {
   background-color: #f1f1f1;
+  color: #000;
 }
 
 .highlight {
-  background: red;
+  background: #d33;
   color: #fff;
   font-weight: bold;
 }
