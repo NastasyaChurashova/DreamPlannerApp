@@ -1,0 +1,33 @@
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  margin-left: 250px; /* Чтобы учесть ширину бокового меню */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.logo p {
+  margin: 0;
+  color: #999;
+  font-size: 0.9rem;
+}
