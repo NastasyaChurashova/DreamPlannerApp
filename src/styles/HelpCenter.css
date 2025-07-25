@@ -1,0 +1,17 @@
+.help-center {
+	max-width: 400px;
+	margin: 0 auto;
+	line-height: 1.3;
+}
+
+.help-center h1 {
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+	color: #f44336;
+}
+
+.help-center h2 {
+	margin-top: 2rem;
+	font-size: 1.4rem;
+	color: #232b63;
+}

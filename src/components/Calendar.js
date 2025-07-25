@@ -1,31 +1,50 @@
-import React from 'react';
-import '../styles/Calendar.css';
+import React, { useRef, useEffect } from "react";
+import { useEvents } from "../context/EventContext";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import timeGridPlugin from "@fullcalendar/timegrid";
+
+import "../styles/Calendar.css";
 
 const Calendar = () => {
-  const days = ['Mo', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const dates = [
-    '', '', '', '', '', 1, 2, 3, 4, 5, 6, 7,
-    8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, '', '', '', '', ''
-  ];
+	const { events } = useEvents();
+	const calendarRef = useRef(null);
 
-  return (
-    <section className="calendar">
-      <header>
-        <h2>FEBRUARY 2025</h2>
-      </header>
-      <div className="calendar-grid">
-        {days.map((day) => (
-          <div key={day} className="day">{day}</div>
-        ))}
-        {dates.map((date, index) => (
-          <div key={index} className={`date ${date === 6 ? 'highlight' : ''}`}>
-            {date}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+	const transformedEvents = events.map((e, i) => ({
+		id: String(i),
+		title: e.title,
+		start: `${e.date}T${e.startTime}`,
+		end: `${e.date}T${e.endTime}`,
+		description: e.description,
+	}));
+
+	const handleDateClick = (info) => {
+		alert(`Clicked on date: ${info.dateStr}`);
+	};
+
+	const handleEventClick = (info) => {
+		alert(`Event: ${info.event.title}\n${info.event.extendedProps.description}`);
+	};
+
+	return (
+		<div className="calendar-container">
+			<FullCalendar
+				ref={calendarRef}
+				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+				initialView="dayGridMonth"
+				headerToolbar={{
+					left: "prev,next today",
+					center: "title",
+					right: "dayGridMonth,timeGridWeek,timeGridDay",
+				}}
+				events={transformedEvents}
+				dateClick={handleDateClick}
+				eventClick={handleEventClick}
+				height="auto"
+			/>
+		</div>
+	);
 };
 
 export default Calendar;

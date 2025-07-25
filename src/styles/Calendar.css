@@ -1,51 +1,143 @@
 .calendar {
-  margin-left: 270px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  min-height: calc(100vh - 80px); 
+	margin-left: 270px;
+	padding: 20px;
+	background-color: #f9f9f9;
+	min-height: calc(100vh - 80px);
 }
 
 .calendar header {
-  text-align: center;
-  margin-bottom: 20px;
+	text-align: center;
+	margin-bottom: 20px;
 }
 
 .calendar header h2 {
-  font-size: 1.5rem;
-  color: #333;
-  font-weight: bold;
+	font-size: 1.5rem;
+	color: #d33;
+	font-weight: bold;
 }
 
 .calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 10px;
 }
 
 .day {
-  font-weight: bold;
-  text-align: center;
-  color: #666;
-  padding: 10px;
-  background: #fff;
-  border: 1px solid #ddd;
+	font-weight: bold;
+	text-align: center;
+	color: #666;
+	padding: 10px;
+	background: #fff;
+	border: 1px solid #ddd;
 }
 
 .date {
-  text-align: center;
-  padding: 15px;
-  border: 1px solid #ddd;
-  background: #fff;
-  transition: background-color 0.2s ease;
+	position: relative;
+	cursor: pointer;
+	text-align: center;
+	background: #fff;
+	transition: background-color 0.2s ease;
+	padding: 1rem;
+	border: 1px solid #ccc;
 }
 
 .date:hover {
-  background-color: #f1f1f1;
-  color: #000;
+	background-color: #f1f1f1;
+	color: #000;
 }
 
 .highlight {
-  background: #d33;
-  color: #fff;
-  font-weight: bold;
+	background: #2f36a2;
+	color: #fff;
+	font-weight: bold;
+	border: 2px solid #000;
+}
+
+.dot {
+	width: 6px;
+	height: 6px;
+	background-color: red;
+	border-radius: 50%;
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.events-list {
+	margin-top: 20px;
+	padding: 10px;
+	border-top: 1px solid #ccc;
+}
+
+.event-item {
+	margin: 5px 0;
+}
+
+.calendar-events {
+	margin-top: 20px;
+	padding: 15px;
+	border-top: 1px solid #ccc;
+}
+
+.calendar-event {
+	margin-bottom: 10px;
+	padding: 8px;
+	background: #f3f3f3;
+	border-left: 3px solid #d03434;
+}
+
+.fc .fc-col-header-cell {
+	background-color: #d03434;
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.fc .fc-day-today {
+	background-color: #1e1474 !important;
+	color: white;
+}
+
+.fc .fc-day-today:hover {
+	background-color: #d03434 !important;
+	color: white;
+}
+
+.fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+	margin-left: 0;
+}
+
+@media (max-width: 768px) {
+	.calendar {
+		margin: 0;
+	}
+	.day,
+	.date {
+		padding: 0;
+	}
+
+	.fc-today-button fc-button fc-button-primary {
+		display: none;
+	}
+}
+@media (max-width: 600px) {
+	.fc-header-toolbar {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.fc .fc-toolbar-title {
+		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.fc-button {
+		font-size: 13px;
+		padding: 5px 10px;
+	}
+
+	.fc-daygrid-event {
+		font-size: 12px;
+	}
 }

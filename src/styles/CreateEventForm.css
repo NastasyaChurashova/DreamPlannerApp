@@ -1,86 +1,118 @@
-.create-event-form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-    background-color: #f9f9f9;
-    padding: 20px;
-  }
-  
-  .create-event-form {
-    width: 100%;
-    max-width: 400px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .create-event-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #666;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  
-  .form-group textarea {
-    resize: none;
-    height: 100px;
-  }
-  
-  .form-actions {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  
-  .save-btn {
-    flex: 1;
-    background-color: #307FA8;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .cancel-btn {
-    flex: 1;
-    background-color: #C91515;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .save-btn:hover {
-    background-color: #481b7c;
-  }
-  
-  .cancel-btn:hover {
-    background-color: #c3c944;
-  }
-  
+.create-event-page {
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	width: 100%;
+}
+
+.create-event-page h2 {
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+.create-event-container {
+	max-width: 600px;
+	margin: 2rem auto;
+	padding: 1rem;
+	background-color: #fff;
+}
+
+form {
+	max-width: 600px;
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group label {
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+	padding: 0.5rem 0.75rem;
+	font-size: 1rem;
+	font-family: poppins;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 100%;
+	box-sizing: border-box;
+}
+textarea {
+	resize: vertical;
+	min-height: 80px;
+}
+
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+button {
+	padding: 0.5rem 1.2rem;
+	border: none;
+	border-radius: 4px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.save-btn,
+.cancel-btn {
+	padding: 8px 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.save-btn {
+	background-color: #f44336;
+	color: white;
+}
+
+.save-btn:hover {
+	background-color: #232b63;
+}
+
+.cancel-btn {
+	background-color: #f44336;
+	color: black;
+}
+
+@media (max-width: 768px) {
+	form {
+		padding: 0 1rem;
+	}
+
+	.form-actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	button {
+		width: 100%;
+	}
+}
+
+@media (max-width: 480px) {
+	.create-event-page h2 {
+		font-size: 1.5rem;
+	}
+
+	form {
+		gap: 0.75rem;
+	}
+
+	input,
+	textarea {
+		font-size: 0.95rem;
+	}
+}

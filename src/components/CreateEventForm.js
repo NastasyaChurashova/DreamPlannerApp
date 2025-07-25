@@ -1,89 +1,77 @@
-import React, { useState } from 'react';
-import '../styles/CreateEventForm.css';
+import "../styles/CreateEventForm.css";
 
-const CreateEventForm = ({ onSubmit, onCancel, initialData }) => {
-  const [eventName, setEventName] = useState(initialData?.eventName || '');
-  const [eventDate, setEventDate] = useState(initialData?.eventDate || '');
-  const [startTime, setStartTime] = useState(initialData?.startTime || '');
-  const [endTime, setEndTime] = useState(initialData?.endTime || '');
-  const [description, setDescription] = useState(initialData?.description || '');
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEvents } from "../context/EventContext";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit({
-      eventName,
-      eventDate,
-      startTime,
-      endTime,
-      description,
-    });
-  };
+const CreateEventForm = () => {
+	const { addEvent } = useEvents();
+	const navigate = useNavigate();
 
-  return (
-    <div className="create-event-form-container">
-      <form className="create-event-form" onSubmit={handleSubmit}>
-        {/* <h2>{initialData ? 'Edit Event' : 'Create Event'}</h2> */}
-        <div className="form-group">
-          <label htmlFor="eventName">Event Name</label>
-          <input
-            type="text"
-            id="eventName"
-            value={eventName}
-            onChange={(e) => setEventName(e.target.value)}
-            placeholder="Enter event name"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="eventDate">Event Date</label>
-          <input
-            type="date"
-            id="eventDate"
-            value={eventDate}
-            onChange={(e) => setEventDate(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="startTime">Start Time</label>
-          <input
-            type="time"
-            id="startTime"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="endTime">End Time</label>
-          <input
-            type="time"
-            id="endTime"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter event description"
-          ></textarea>
-        </div>
-        <div className="form-actions">
-          <button type="submit" className="save-btn">
-            {initialData ? 'Save Changes' : 'Create Event'}
-          </button>
-          <button type="button" className="cancel-btn" onClick={onCancel}>
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+	const [formData, setFormData] = useState({
+		name: "",
+		date: "",
+		startTime: "",
+		endTime: "",
+		description: "",
+	});
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prev) => ({ ...prev, [name]: value }));
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		addEvent(formData);
+		navigate("/");
+	};
+
+	return (
+		<form onSubmit={handleSubmit} className="create-event-form">
+
+			<div className="form-group">
+				<label>Event Name</label>
+				<input
+					type="text"
+					name="name"
+					value={formData.name}
+					onChange={handleChange}
+					required
+					placeholder="Enter event name"
+				/>
+			</div>
+
+			<div className="form-group">
+				<label>Event Date</label>
+				<input type="date" name="date" value={formData.date} onChange={handleChange} required />
+			</div>
+
+			<div className="form-group">
+				<label>Start Time</label>
+				<input type="time" name="startTime" value={formData.startTime} onChange={handleChange} required />
+			</div>
+
+			<div className="form-group">
+				<label>End Time</label>
+				<input type="time" name="endTime" value={formData.endTime} onChange={handleChange} required />
+			</div>
+
+			<div className="form-group">
+				<label>Description</label>
+				<textarea
+					name="description"
+					value={formData.description}
+					onChange={handleChange}
+					placeholder="Enter event description"
+				/>
+			</div>
+
+			<button type="submit" className="save-btn">
+				Create Event
+			</button>
+		</form>
+	);
 };
 
 export default CreateEventForm;

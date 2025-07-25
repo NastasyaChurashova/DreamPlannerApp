@@ -1,13 +1,14 @@
+body {
+	font-family: "Poppins", sans-serif;
+}
+
 .layout {
-  font-family: Poppins;
-  font-weight: 500;
-  display: flex;
-  align-items: flex-start;
+	font-weight: 500;
+	display: flex;
+	align-items: flex-start;
 }
 
 .content {
-  font-family: Poppins;
-  flex: 1; 
-  margin-top: 80px; 
-  padding: 20px;
+	font-family: Poppins;
+	flex: 1;
 }

@@ -1,0 +1,69 @@
+.settings {
+	max-width: 800px;
+	margin: 2rem auto;
+	padding: 1rem;
+	font-family: "Poppins", sans-serif;
+	color: #1e1e1e;
+}
+
+.settings h2 {
+	font-size: 1rem;
+	margin-bottom: 1.5rem;
+	color: #1e1474;
+}
+
+.settings section {
+	margin-bottom: 2rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #ddd;
+}
+
+.settings h3 {
+	font-size: 1.25rem;
+	margin-bottom: 0.75rem;
+	color: #333;
+}
+
+.settings label {
+	display: block;
+	margin-bottom: 1rem;
+	font-size: 0.95rem;
+}
+
+.settings input,
+.settings select {
+	width: 100%;
+	padding: 0.5rem;
+	margin-top: 0.25rem;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.settings input[type="checkbox"] {
+	width: auto;
+	margin-right: 0.5rem;
+}
+
+.settings button.secondary {
+	background-color: #fff;
+	border: 1px solid #999;
+	padding: 0.5rem 1rem;
+	margin-right: 0.5rem;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.settings button.danger {
+	background-color: #e53935;
+	color: #fff;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.danger-zone {
+	border-top: 1px solid #f3bcbc;
+	padding-top: 1rem;
+}
