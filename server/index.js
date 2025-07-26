@@ -1,14 +1,18 @@
-require("dotenv").config();
-
+require("dotenv").config({ path: "./server/.env" });
 const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
+
+console.log("PORT из .env:", process.env.PORT);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new Pool({
+	connectionString: process.env.DATABASE_URL,
+	ssl: { rejectUnauthorized: false },
+});
 
 app.get("/api/events", async (req, res) => {
 	try {
@@ -32,4 +36,6 @@ app.post("/api/events", async (req, res) => {
 	}
 });
 
-app.listen(process.env.PORT, () => console.log(`Server running on http://localhost:${process.env.PORT}`));
+app.listen(process.env.PORT, () => {
+	console.log(`Server running on http://localhost:${process.env.PORT}`);
+});
